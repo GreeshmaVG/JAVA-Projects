@@ -1,0 +1,43 @@
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Scanner;
+
+public class CountdownTimer {
+    public static void main(String[] args) {
+        Timer timer = new Timer();
+        int countdownSeconds = 60;
+
+        class CountdownTask extends TimerTask {
+            private int seconds;
+
+            public CountdownTask(int seconds) {
+                this.seconds = seconds;
+            }
+
+           
+            public void run() {
+                if (seconds > 0) {
+                    System.out.println(seconds + " seconds remaining...");
+                    seconds--;
+                } else {
+                    System.out.println("Time's up!");
+                    timer.cancel();
+                }
+            }
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Press Enter to start the countdown, or type 'stop' to cancel.");
+
+        String userInput = scanner.nextLine();
+        if (!userInput.equalsIgnoreCase("stop")) {
+            CountdownTask countdownTask = new CountdownTask(countdownSeconds);
+            timer.schedule(countdownTask, 1000, 1000);
+        } else {
+            System.out.println("Countdown cancelled.");
+            timer.cancel();
+        }
+
+        scanner.close();
+    }
+}
