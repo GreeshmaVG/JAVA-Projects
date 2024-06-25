@@ -5,15 +5,15 @@ public class GuessTheNumber1 {
     public static void main(String[] args) {
         // Generate a random number between 1 and 100
         Random random = new Random();
-        int targetNumber = random.nextInt(100) + 1;
+        int targetNumber = random.nextInt(10) + 1;
 
         Scanner scanner = new Scanner(System.in);
         int guess;
         int numAttempts = 0;
-        int maxAttempts = 10; // Set the maximum number of attempts
+        int maxAttempts = 5; // Set the maximum number of attempts
 
         while (numAttempts < maxAttempts) {
-            System.out.print("Guess a number between 1 and 100: ");
+            System.out.print("Guess a number between 1 and 10: ");
             guess = scanner.nextInt();
             numAttempts++;
 
